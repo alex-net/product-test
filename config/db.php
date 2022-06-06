@@ -3,7 +3,7 @@
 return [
     'class' => \yii\db\Connection::class,
     'dsn' => 'sqlite:@app/db.sqlite',
-    'on '.\yii\db\Connection::EVENT_AFTER_OPEN=>function($e){
+    'on ' . \yii\db\Connection::EVENT_AFTER_OPEN => function($e) {
     	Yii::$app->db->createCommand('pragma foreign_keys=on')->execute();
     }
     //'username' => 'root',

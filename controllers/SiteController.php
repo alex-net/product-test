@@ -94,7 +94,6 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
 
@@ -108,7 +107,6 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
             return $this->refresh();
         }
         return $this->render('contact', [
@@ -133,8 +131,8 @@ class SiteController extends Controller
      */
     public function actionProductsList()
     {
-        return $this->render('products-list',[
-            'dp'=>\app\models\Product::getAll(Yii::$app->request->get()),
+        return $this->render('products-list', [
+            'dp' => \app\models\Product::getAll(Yii::$app->request->get()),
         ]);
     }
 
@@ -146,11 +144,12 @@ class SiteController extends Controller
     public function actionProductView($key)
     {
         $p=\app\models\Product::getById($key);
-        if (!$p)
+        if (!$p) {
             throw new \yii\web\NotFoundHttpException("Товар не найден");
+        }
             
-        return $this->render('product-view',[
-            'p'=>$p,
+        return $this->render('product-view', [
+            'p' => $p,
         ]);
     }
 

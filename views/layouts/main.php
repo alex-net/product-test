@@ -41,8 +41,8 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label'=>'Товары','url'=>['/site/products-list']],
-            ['label'=>'Админка','visible'=>!Yii::$app->user->isGuest,'items'=>$adminka->generateMenu()],
+            ['label' => 'Товары', 'url' => ['/site/products-list']],
+            ['label' => 'Админка', 'visible' => !Yii::$app->user->isGuest, 'items' => $adminka->generateMenu()],
             
 
             Yii::$app->user->isGuest ? (
